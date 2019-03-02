@@ -27,8 +27,8 @@
     "typescript": "~3.2.2"
   },
   "engines": {
-    "node": "6.11.0",
-    "npm": "3.10.10"
+    "node": "10.13.0",
+    "npm": "6.8.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
