@@ -2,21 +2,19 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
     <title>Automation Suite</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-    <script type="text/css">
-
-    </script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-dark">
         <a href="#" class="navbar-brand">
             <h3 class="mb-0">Automation Suite</h3>
         </a>
@@ -41,7 +39,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
+                    <h5 class="modal-title">Login/Register</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="close" onclick="flipToLogin()">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -84,14 +82,14 @@
                               <legend class="col-form-label col-sm-6 pt-0">Are you an admin?</legend>
                               <div class="col-sm-6">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="isAdmin" id="isAdmin1" value="yes">
+                                  <input class="form-check-input" type="radio" name="isAdmin" id="isAdmin1" value="yes" onclick="$('#apiKey').addClass('d-block');$('#apiKey').removeClass('d-none');">
                                   <label class="form-check-label" for="isAdmin1">
                                     Yes
                                   </label>
                                   <i class='far fa-question-circle' data-toggle="tooltip" data-placement="top" title="If you are an admin, send mail to xxx@deloitte.com to get Unique key for registering your project" style='font-size:1rem;color:teal'></i>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="isAdmin" id="isAdmin2" value="no" checked>
+                                  <input class="form-check-input" type="radio" name="isAdmin" id="isAdmin2" value="no" checked  onclick="$('#apiKey').removeClass('d-block');$('#apiKey').addClass('d-none');">
                                   <label class="form-check-label" for="isAdmin2">
                                     No
                                   </label>
@@ -99,6 +97,11 @@
                               </div>
                             </div>
                           </fieldset>
+                          <div class="form-group d-none" id="apiKey">
+                            <label for="apiKey">API Key:</label>
+                            <input type="apiKey" class="form-control" name="password" id="password" aria-describedby="helpIdApiKey" placeholder="Enter API Key">
+                            <small id="helpIdApiKey" class="form-text text-muted">Enter 16 digit API key received from xxx@deloitte.com</small>
+                          </div>
                           <div class="form-group d-flex justify-content-center">
                               <button class="btn btn-primary">Register</button>
                           </div>
@@ -108,27 +111,19 @@
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-primary d-block" id="regBtn" onclick="flipToRegister();">New User? Click here to register</button>
                     <button class="btn btn-primary d-none" id="logBtn" onclick="flipToLogin();">Existing User? Click here to login</button>
-                    <button class="btn btn-secondary" data-dismiss="modal" onclick="flipToLogin()">Close</button>
+                    <button class="btn btn-primary" data-dismiss="modal" onclick="flipToLogin()">Close</button>
                 </div>
             </div>
         </div>
     </div>
-  <h1 class="display-5 text-center text-danger">Welcome to Selenium Automation Suite</h1>
-  <div class="container">
-     <!-- <p class="intro-subtitle"><span class="text-slider-items">CEO DevFolio,Web Developer,Web Designer,Frontend Developer,Graphic Designer</span><strong class="text-slider">Graphic Designer</strong><span class="typed-cursor" style="animation-iteration-count: infinite;">|</span></p>
-     --><div class="row ">
-        <div class="form-group">
-            <label for="userName">UserName:</label>
-            <input type="text" class="form-control" name="userName" id="userName" aria-describedby="helpId" placeholder="Enter UserName">
-            <small id="helpIdUserName" class="form-text text-muted">Should be a minimum of 8 characters</small>
-          </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Enter Email">
-            <small id="helpIdEmail" class="form-text text-muted"></small>
-          </div>
-    </div>
-  </div>
+    <section id="showcase" class="d-flex justify-content-center align-items-center">
+      <div id="overlay"></div>
+      <div id="header" class="container text-white text-center">
+          <h3 class="display-5 mb-0">DELOITTE's</h3>
+          <h1 class="display-1">AUTOMATION SUITE</h1>
+          <p class="lead d-none d-md-block">A web based solution to configure, schedule and run the executables over the cloud!!!</p>
+      </div>
+    </section>
   <!--<app-root></app-root>-->
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
